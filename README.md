@@ -24,6 +24,26 @@ NX Monorepo containing front & back applications
 
 [NestJS](https://nestjs.com/)
 
+## Environment variables
+
+In project root directory
+
+`.env` file
+
+```env
+
+```
+
+**Important**: Make sure to read libs `README.md` file to know what environment variables are needed in each library
+
+### Autogenerate environment files
+
+This command generates all ".env files" needed, if already exists any .env it will be replaced by the environment variables describes in README.md.
+
+```sh
+yarn tools:env:create
+```
+
 ## NX workflow
 
 ### Generate an Angular application
@@ -88,218 +108,6 @@ Workspace settings defined in `.vscode/settings.json` for _end of line_, linter,
 It may happen that VSCode ignore end of line defined in workspace settings. Check `LF` is set instead of `CLRF` in your code editor
 
 Otherwise, when editing repository bash scripts, for example, database bash scripts, execution in linux based containers may not work if saved with CLRF end of line
-
-##### Extensions
-
-Mandatory, to let repository settings.json configuration work
-
-- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
-
-- [TSLint](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-tslint-plugin)
-
-### Secrets
-
-This secret file (for ING comms) must exist: `libs/ing/assets/secrets/pv_staging.key`
-
-### Docker
-
-_**Note**: Make sure all `.env` files are properly configured_
-
-`docker-compose up` to run all containers
-
-Registration **ing-webapp** URL in **docker** is the _legacy_ one:
-`http://localhost:4200/landing?activationCode={token}`
-
-NGINX will redirect URL above to standard _MBTv2_ URL:
-`http://localhost:4200/register/token/{activationCode}`
-
-
-#### DB
-
-`docker-compose up mbt-database` to start DB container.
-
-DB defined in `docker/database` directory
-
-#### mock-crm
-
-`docker-compose up mbt-mock-crm`
-
-* Console: `http://localhost:9111/__admin/`
-
-#### Sonar
-
-`docker-compose -f docker-compose-sonar.yml up` to start SonarQube container
-
-#### MBT services
-
-- ing-webapp (`Dockerfile.ing-webapp`)
-- api (`Dockerfile.api`)
-- smart (`Dockerfile.smart`)
-- mock-ing-api (`Dockerfile.mock-ing-api`)
-
-All services images (except _wiremocks_) have a common base image (`Dockerfile.base`) since NX is a monorepo and all services share a common base
-
-All services images are optimized for **prod** env and are configured as *multistage* images to minimize final image size
-
-### Feed the DB
-
-`yarn db:[migration|seed]:[operation] [target]`
-
-**operation**
-
-- `generate` (only for `migration`)
-- `create` (only for `seed`)
-- `run`
-- `revert`
-
-**target**
-
-- `libs/database`
-- `apps/mock-ing-api`
-
-**Create DB schema for development environment**
-
-This is not needed in case applications are started in local environment, since they synchronize the DB schema on startup
-
-```
-yarn db:migration:run libs/database
-yarn db:migration:run apps/mock-ing-api
-```
-
-**Seed DB for development environment**
-
-Seed data to DB schema to start minimal set of data to make the system work
-
-```
-yarn run db:seed:run libs/database
-yarn run db:seed:run apps/mock-ing-api
-```
-
-**Locations**
-
-Migrations & seeds are located in:
-
-- `libs/model/db`
-- `apps/mock-ing-api/db`
-
-### Serve applications
-
-#### ing-webapp
-
-`nx serve ing-webapp`
-
-* Home: `http://localhost:4200`
-* Register: `http://localhost:4200/register/token/{token}`
-
-#### api
-
-`nx serve api`
-
-* Swagger: `http://localhost:3333/api/v2/doc`
-
-#### smart
-
-`nx serve smart`
-
-* Swagger: `http://localhost:8080/smart/v2/doc`
-
-#### mock-ing-api
-
-`nx serve mock-ing-api`
-
-* Swagger: `http(s)://localhost:4444/ing/api/doc`
-
-_mock-ing-api_ will be served via HTTPS using .env var `FORCE_HTTPS` set to `true` . Otherwise it will be served via HTTP
-
-For **local env only**: `FORCE_HTTPS=true` in `apps/mock-ing-api/.env`
-
-#### Run all apps
-
-* `yarn start:all`
-* `nx run-many --target=serve --all --parallel --maxParallel=10`
-
-Run all backend apps
-
-* `yarn start:back`
-* `nx run-many --target=serve --projects=mock-ing-api,api,smart --parallel --maxParallel=10`
-
-### Tools
-
-#### Checks
-Check project lint, unit test and e2e tests
-
-```sh
-yarn run:checks
-```
-
-#### Auth
-
-Tools for authentication on MBT API
-
-##### auth0
-
-Generate auth0 token to access MBT API secure endpoints
-
-```
-yarn tools:auth:auth0 [EMAIL] [PASSWORD]
-```
-**EMAIL** and **PASSWORD** arguments correspond to auth0 user credentials
-
-This will generate a **user** token, but if **client credentials** token is needed instead, leave _EMAIL_ and _PASSWORD_ **empty**
-
-Sample:
-
-```
-# client credentials token
-yarn tools:auth:auth0
-
-# user token
-yarn tools:auth:auth0 email@email.com mypassword
-```
-
-##### pv-simple-jwt
-
-Generate jwt token used between communications between MBT and PV internal modules such as CRM and AceControl
-
-```
-yarn tools:auth:pv-simple-jwt [SECRET] [SECONDS_TO_EXPIRE]
-```
-
-- **SECRET** argument must match `PV_SIMPLE_SECRET` variable defined in `libs/auth/.env` file
-- **SECONDS_TO_EXPIRE** corresponds to seconds to consider token expired since creation
-
-Sample:
-
-```
-yarn tools:auth:pv-simple-jwt mysecret 30
-```
-
-##### token (Activation code)
-
-There are two ways to create a new token
-
-* Command: `yarn tools:activationCode myToken myEmail@demo.com true|false (multiple signee)`
-* Swagger: https://localhost:4444/api/v2/doc/#/Customer/CustomerController_create
-
-## Environment variables
-
-In project root directory
-
-`.env` file
-
-```env
-
-```
-
-**Important**: Make sure to read libs `README.md` file to know what environment variables are needed in each library
-
-### Autogenerate environment files
-
-This command generates all ".env files" needed, if already exists any .env it will be replaced by the environment variables describes in README.md.
-
-```sh
-yarn tools:env:create
-```
 
 ## Running lint
 
