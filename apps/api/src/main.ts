@@ -28,12 +28,13 @@ async function bootstrap () {
 
     const document = SwaggerModule.createDocument(app, swaggerConfig)
     SwaggerModule.setup(`${globalPrefix}/${swaggerConf.path}`, app, document)
-
-    Logger.log(`Swagger listening at at http://localhost:${port}/${globalPrefix}/${swaggerConf.path}`, 'APP')
   }
 
   await app.listen(port, () => {
     Logger.log(`Listening at http://localhost:${port}/${globalPrefix}`, 'APP')
+    if (swaggerConf.enable) {
+      Logger.log(`Swagger listening at at http://localhost:${port}/${globalPrefix}/${swaggerConf.path}`, 'APP')
+    }
   })
 }
 
