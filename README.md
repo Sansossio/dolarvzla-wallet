@@ -12,14 +12,6 @@ This project was generated using [Nx](https://nx.dev).
 
 NX Monorepo containing front & back applications
 
-### Front
-
-[Angular](https://angular.io) & [NGRX](https://ngrx.io) & [Beat Design Sistem](https://beat.payvision.tech/?path=/docs/intro-beat-design-system--page)
-
-#### Redux Architecture
-
-![NGRX state management lifecycle](docs/ngrx-state-management-lifecycle.png)
-
 ### Back
 
 [NestJS](https://nestjs.com/)
