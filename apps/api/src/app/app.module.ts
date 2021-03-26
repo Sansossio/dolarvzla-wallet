@@ -1,4 +1,13 @@
 import { Module } from '@nestjs/common'
+import { ConfigModule } from '@nestjs/config'
+import configuration from '../configuration'
 
-@Module({})
+@Module({
+  imports: [
+    ConfigModule.forRoot({
+      envFilePath: './apps/api/.env',
+      load: configuration
+    })
+  ]
+})
 export class AppModule {}
