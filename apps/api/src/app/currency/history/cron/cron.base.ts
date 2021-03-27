@@ -6,7 +6,7 @@ import { CurrencyHistoryEntity, Currency } from '@dolarvzla-wallet/models'
 import ms from 'ms'
 import { ConfigService } from '@nestjs/config'
 
-const INTERVAL = ms('30s')
+const INTERVAL = ms('1m')
 
 @Injectable()
 export abstract class CronBase {

@@ -1,7 +1,7 @@
 import { Controller, Get, HttpStatus, Query } from '@nestjs/common'
 import { API_URL, BASE_CONTROLLER_URI } from '@dolarvzla-wallet/api-interface'
 import { GetCurrencyPriceRequestDto } from '../dto/request/get-currency-price.dto.request'
-import { ApiOkResponse, ApiTags } from '@nestjs/swagger'
+import { ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger'
 import { GetCurrencyPriceDtoResponse } from '../dto/response/get-currency-price.dto.response'
 import { CurrencyHistoryService } from '../service/currency-history.service'
 import { ApiErrorResponse } from '@dolarvzla-wallet/http'
@@ -18,6 +18,9 @@ export class CurrencyHistoryController {
   @ApiErrorResponse(
     HttpStatus.NOT_FOUND
   )
+  @ApiOperation({
+    summary: 'Get last currency price'
+  })
   async getPrice (
   @Query() query: GetCurrencyPriceRequestDto
   ) {
