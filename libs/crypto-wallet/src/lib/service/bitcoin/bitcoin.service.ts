@@ -7,13 +7,15 @@ import { RpcResponseDto } from './dto/rpc-response.dto'
 
 @Injectable()
 export class BitcoinService extends BaseService {
-  private readonly domain = this.config.get('bitcoin.rpc.domain')
-  private readonly port = this.config.get('bitcoin.rpc.port')
-  private readonly username = this.config.get('bitcoin.rpc.username')
-  private readonly password = this.config.get('bitcoin.rpc.password')
+  private readonly rpcConfig = {
+    domain: this.config.get('bitcoin.rpc.domain'),
+    port: this.config.get('bitcoin.rpc.port'),
+    username: this.config.get('bitcoin.rpc.username'),
+    password: this.config.get('bitcoin.rpc.password')
+  }
 
-  private async rpcRequest<T> (method: AvailableMethodsRpc, params: any[], path = ''): Promise<T> {
-    const url = `http://${this.username}:${this.password}@${this.domain}:${this.port}/${path}`
+  private async rpcRequest<T> (method: AvailableMethodsRpc, params: any[] = [], path = ''): Promise<T> {
+    const url = `http://${this.rpcConfig.username}:${this.rpcConfig.password}@${this.rpcConfig.domain}:${this.rpcConfig.port}/${path}`
     const {
       data: response
     } = await this.httpService.post<RpcResponseDto>(
@@ -30,6 +32,10 @@ export class BitcoinService extends BaseService {
 
   private getWalletPath (walletName: string) {
     return `wallet/${walletName}`
+  }
+
+  async listWallets (): Promise<string[]> {
+    return (await this.rpcRequest<string[]>(AvailableMethodsRpc.LISTWALLETS)).filter(val => !!val)
   }
 
   async generateNewAddress (walletName: string) {

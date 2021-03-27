@@ -1,6 +1,8 @@
 import { HttpModule, Module } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
+import { ScheduleModule } from '@nestjs/schedule'
 import configuration from '../configuration'
+import { BitcoinSchedule } from './service/bitcoin/bitcoin.schedule'
 import { BitcoinService } from './service/bitcoin/bitcoin.service'
 
 @Module({
@@ -9,10 +11,14 @@ import { BitcoinService } from './service/bitcoin/bitcoin.service'
       envFilePath: './libs/crypto-wallet/.env',
       load: configuration
     }),
+    ScheduleModule.forRoot(),
     HttpModule
   ],
   providers: [
-    BitcoinService
+    BitcoinService,
+
+    // Schedules
+    BitcoinSchedule
   ],
   exports: [
     BitcoinService

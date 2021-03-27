@@ -3,7 +3,7 @@ import { Interval } from '@nestjs/schedule'
 import { InjectRepository } from '@nestjs/typeorm'
 import { Repository } from 'typeorm'
 import { CurrencyHistoryEntity, Currency } from '@dolarvzla-wallet/models'
-import ms from 'ms'
+import * as ms from 'ms'
 import { ConfigService } from '@nestjs/config'
 
 const INTERVAL = ms('1m')

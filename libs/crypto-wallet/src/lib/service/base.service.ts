@@ -11,5 +11,7 @@ export abstract class BaseService {
 
   abstract createRandomWallet (): Promise<NewWalletDto>
 
+  abstract listWallets (): Promise<string[]>
+
   abstract generateNewAddress (walletName: string): Promise<string>
 }
