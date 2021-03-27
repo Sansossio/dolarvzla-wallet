@@ -10,36 +10,18 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "lib": [
-      "es2017",
-      "dom"
-    ],
+    "lib": ["es2017", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@dolarvzla-wallet/wallet": [
-        "libs/wallet/src/index.ts"
-      ],
-      "@dolarvzla-wallet/api-interface": [
-        "libs/api-interface/src/index.ts"
-      ],
-      "@dolarvzla-wallet/security": [
-        "libs/security/src/index.ts"
-      ],
-      "@dolarvzla-wallet/http": [
-        "libs/http/src/index.ts"
-      ],
-      "@dolarvzla-wallet/models": [
-        "libs/models/src/index.ts"
-      ],
-      "@dolarvzla-wallet/crypto": [
-        "libs/crypto/src/index.ts"
-      ]
+      "@dolarvzla-wallet/api-interface": ["libs/api-interface/src/index.ts"],
+      "@dolarvzla-wallet/security": ["libs/security/src/index.ts"],
+      "@dolarvzla-wallet/http": ["libs/http/src/index.ts"],
+      "@dolarvzla-wallet/models": ["libs/models/src/index.ts"],
+      "@dolarvzla-wallet/crypto": ["libs/crypto/src/index.ts"],
+      "@dolarvzla-wallet/crypto-wallet": ["libs/crypto-wallet/src/index.ts"]
     }
   },
-  "exclude": [
-    "node_modules",
-    "tmp"
-  ]
+  "exclude": ["node_modules", "tmp"]
 }

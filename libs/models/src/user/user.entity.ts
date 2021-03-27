@@ -1,7 +1,8 @@
-import { AfterLoad, BeforeInsert, BeforeUpdate, Column, Entity } from 'typeorm'
+import { AfterLoad, BeforeInsert, BeforeUpdate, Column, Entity, OneToMany } from 'typeorm'
 import { EntityBase } from '../entity.base'
 import { AesCrypto } from '@dolarvzla-wallet/crypto'
 import { cryptoConfig } from '../configuration/crypto.config'
+import { UserWalletEntity } from './user-wallet.entity'
 
 @Entity('user')
 export class UserEntity extends EntityBase {
@@ -12,6 +13,9 @@ export class UserEntity extends EntityBase {
 
   @Column()
   password: string
+
+  @OneToMany('UserWalletEntity', 'user', { cascade: true })
+  wallets: Promise<UserWalletEntity[]>
 
   @BeforeInsert()
   @BeforeUpdate()

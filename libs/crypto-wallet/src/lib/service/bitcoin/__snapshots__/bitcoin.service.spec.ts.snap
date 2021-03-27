@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BitcoinService should match snapshot 1`] = `
+Object {
+  "address": "walletAddress",
+  "name": "wallletName",
+}
+`;
