@@ -23,6 +23,15 @@
       ],
       "@dolarvzla-wallet/api-interface": [
         "libs/api-interface/src/index.ts"
+      ],
+      "@dolarvzla-wallet/security": [
+        "libs/security/src/index.ts"
+      ],
+      "@dolarvzla-wallet/http": [
+        "libs/http/src/index.ts"
+      ],
+      "@dolarvzla-wallet/models": [
+        "libs/models/src/index.ts"
       ]
     }
   },

@@ -1,5 +1,5 @@
 import { registerAs } from '@nestjs/config'
-import { Currency } from '../currency/enum/currency.enum'
+import { Currency } from '@dolarvzla-wallet/models'
 
 export const currencyConfig = registerAs('currency', () => ({
   prices: {
