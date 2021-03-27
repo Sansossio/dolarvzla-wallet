@@ -7,6 +7,7 @@
   "typescript.preferences.importModuleSpecifier": "relative",
   "typescript.format.semicolons": "remove",
   "javascript.format.semicolons": "remove",
+  "typescript.preferences.quoteStyle": "single",
   "typescriptHero.imports.insertSemicolons": false,
   "javascript.format.insertSpaceAfterSemicolonInForStatements": false,
   "jest.autoEnable": false

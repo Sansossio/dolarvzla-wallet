@@ -1,0 +1,20 @@
+version: '3'
+
+volumes:
+  data: {}
+
+services:
+  postgres:
+    container_name: dolarvzla_database
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: dolarvzla_wallet
+      PGDATA: /var/lib/postgresql/data/pgdata
+    ports:
+      - "5432:5432"
+    volumes:
+      - data:/var/lib/postgresql/data
+
