@@ -27,6 +27,7 @@
     "http": { "tags": [] },
     "models": { "tags": [] },
     "crypto": { "tags": [] },
-    "crypto-wallet": { "tags": [] }
+    "crypto-wallet": { "tags": [] },
+    "jwt": { "tags": [] }
   }
 }

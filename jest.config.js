@@ -7,5 +7,6 @@ module.exports = {
     "<rootDir>/libs/models",
     "<rootDir>/libs/crypto",
     "<rootDir>/libs/crypto-wallet",
+    "<rootDir>/libs/jwt",
   ],
 };

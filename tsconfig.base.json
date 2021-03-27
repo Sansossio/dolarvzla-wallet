@@ -20,7 +20,8 @@
       "@dolarvzla-wallet/http": ["libs/http/src/index.ts"],
       "@dolarvzla-wallet/models": ["libs/models/src/index.ts"],
       "@dolarvzla-wallet/crypto": ["libs/crypto/src/index.ts"],
-      "@dolarvzla-wallet/crypto-wallet": ["libs/crypto-wallet/src/index.ts"]
+      "@dolarvzla-wallet/crypto-wallet": ["libs/crypto-wallet/src/index.ts"],
+      "@dolarvzla-wallet/jwt": ["libs/jwt/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

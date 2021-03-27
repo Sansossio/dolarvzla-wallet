@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Jwt Middleware Use should add objects to req 1`] = `
+Object {
+  "headers": Object {
+    "authorization": "token",
+  },
+  "token": "token",
+  "tokenData": Object {
+    "sub": "ababe672-36d2-4d45-839a-34babe67289e",
+  },
+}
+`;
+
+exports[`Jwt Middleware Use should add objects to req when casting userId (sub attribute) 1`] = `
+Object {
+  "headers": Object {
+    "authorization": "token",
+  },
+  "token": "token",
+  "tokenData": Object {
+    "sub": "ababe672-36d2-4d45-839a-34babe67289e",
+  },
+}
+`;
+
+exports[`Jwt Middleware Use should ignore error on implementation 1`] = `
+Object {
+  "headers": Object {
+    "authorization": "token",
+  },
+}
+`;
+
+exports[`Jwt Middleware Use should ignore error when userId (sub attribute) is not valid 1`] = `
+Object {
+  "headers": Object {
+    "authorization": "token",
+  },
+}
+`;
+
+exports[`Jwt Middleware Use should ignore implementation when token is not string 1`] = `
+Object {
+  "headers": Object {
+    "authorization": true,
+  },
+}
+`;
