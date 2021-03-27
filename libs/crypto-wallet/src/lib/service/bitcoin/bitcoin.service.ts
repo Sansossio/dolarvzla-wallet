@@ -28,14 +28,21 @@ export class BitcoinService extends BaseService {
     return response.result
   }
 
+  private getWalletPath (walletName: string) {
+    return `wallet/${walletName}`
+  }
+
+  async generateNewAddress (walletName: string) {
+    return this.rpcRequest<string>(AvailableMethodsRpc.GETNEWADDRESS, [], this.getWalletPath(walletName))
+  }
+
   async createRandomWallet (): Promise<NewWalletDto> {
     const walletName = uuidv4()
     const { name } = await this.rpcRequest<{ name: string }>(AvailableMethodsRpc.CREATEWALLET, [walletName])
-    const address = await this.rpcRequest<string>(AvailableMethodsRpc.GETNEWADDRESS, [], `wallet/${name}`)
 
     return {
       name,
-      address
+      address: await this.generateNewAddress(walletName)
     }
   }
 }

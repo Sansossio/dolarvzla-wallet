@@ -10,4 +10,6 @@ export abstract class BaseService {
   ) {}
 
   abstract createRandomWallet (): Promise<NewWalletDto>
+
+  abstract generateNewAddress (walletName: string): Promise<string>
 }
