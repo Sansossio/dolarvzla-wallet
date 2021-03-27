@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { NewWalletDto } from '../dto/new-wallet.dto'
 import { AvailableMethodsRpc } from './dto/available-methods.enum'
 import { RpcResponseDto } from './dto/rpc-response.dto'
+import { WalletBalanceDto } from '../dto/wallet-balance.dto'
 
 @Injectable()
 export class BitcoinService extends BaseService {
@@ -49,6 +50,14 @@ export class BitcoinService extends BaseService {
     return {
       name,
       address: await this.generateNewAddress(walletName)
+    }
+  }
+
+  async getBalance (walletName: string): Promise<WalletBalanceDto> {
+    const balance = await this.rpcRequest<number>(AvailableMethodsRpc.GETBALANCE, [], this.getWalletPath(walletName))
+
+    return {
+      balance
     }
   }
 }

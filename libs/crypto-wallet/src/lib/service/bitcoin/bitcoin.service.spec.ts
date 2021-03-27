@@ -50,4 +50,14 @@ describe('BitcoinService', () => {
       expect(rpcRequest).toBeCalledWith(AvailableMethodsRpc.GETNEWADDRESS, [], `wallet/${walletName}`)
     })
   })
+
+  describe('getBalance', () => {
+    it('should return balance', async () => {
+      const balance = 50
+
+      mockPost.mockImplementation(async () => ({ data: { result: balance } }))
+
+      await expect(service.getBalance('')).resolves.toMatchSnapshot()
+    })
+  })
 })

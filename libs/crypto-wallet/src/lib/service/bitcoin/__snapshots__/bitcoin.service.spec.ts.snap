@@ -8,3 +8,9 @@ Object {
 `;
 
 exports[`BitcoinService generateNewAddress should match snapshot 1`] = `"MY_WALLET"`;
+
+exports[`BitcoinService getBalance should return balance 1`] = `
+Object {
+  "balance": 50,
+}
+`;
