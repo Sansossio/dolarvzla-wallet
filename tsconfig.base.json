@@ -32,6 +32,9 @@
       ],
       "@dolarvzla-wallet/models": [
         "libs/models/src/index.ts"
+      ],
+      "@dolarvzla-wallet/crypto": [
+        "libs/crypto/src/index.ts"
       ]
     }
   },

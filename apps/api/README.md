@@ -24,4 +24,7 @@ SWAGGER_PATH=docs
 # Currency
 CURRENCY_PRICE_COINBASE_BITCOIN=https://api.coinbase.com/v2/prices/spot?currency=USD
 CURRENCY_PRICE_COINBASE_ETHEREUM=https://api.coinbase.com/v2/prices/ETH-USD/spot
+
+# Crypto
+MODEL_ENCRYPTION_SECRET=Y4p8CAaSJzVKILxJGJXdnO8ju2824mr2
 ```
