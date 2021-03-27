@@ -4,9 +4,13 @@ export class EntityBase {
   @PrimaryGeneratedColumn()
   id: number
 
-  @CreateDateColumn()
+  @CreateDateColumn({
+    type: 'timestamptz'
+  })
   createAt: Date
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({
+    type: 'timestamptz'
+  })
   updateAt: Date
 }
