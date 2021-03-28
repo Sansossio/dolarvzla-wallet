@@ -15,7 +15,7 @@ export class CurrencyHistoryService {
   async getCurrencyPrice (query: GetCurrencyPriceRequestDto): Promise<GetCurrencyPriceDtoResponse> {
     const data = await this.repository.findOne({
       where: {
-        name: query.currency
+        currency: query.currency
       },
       order: {
         createAt: 'DESC'

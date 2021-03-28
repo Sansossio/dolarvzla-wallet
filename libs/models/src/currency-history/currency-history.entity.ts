@@ -8,7 +8,7 @@ export class CurrencyHistoryEntity extends EntityBase {
     type: 'varchar',
     length: 4
   })
-  name: Currency
+  currency: Currency
 
   @Column({
     type: 'float'
