@@ -11,7 +11,7 @@ export class UserWalletEntity extends EntityBase {
     type: 'varchar',
     length: 4
   })
-  wallet: Currency
+  type: Currency
 
   @Column()
   walletId: string

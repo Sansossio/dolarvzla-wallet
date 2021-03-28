@@ -1,6 +1,7 @@
 export const BASE_CONTROLLER_URI = {
   CURRENCY: 'currency',
-  USER: 'user'
+  USER: 'user',
+  WALLET: 'wallet'
 }
 export const API_URL = {
   CURRENCY: {
@@ -10,5 +11,8 @@ export const API_URL = {
     REGISTER: `${BASE_CONTROLLER_URI.USER}/register`,
     LOGIN: `${BASE_CONTROLLER_URI.USER}/login`,
     ME: `${BASE_CONTROLLER_URI.USER}/me`
+  },
+  WALLET: {
+    LIST: `${BASE_CONTROLLER_URI.WALLET}/list`
   }
 }

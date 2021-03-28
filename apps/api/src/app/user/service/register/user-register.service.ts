@@ -18,7 +18,7 @@ export class UserRegisterService {
     const { name, address } = await this.btcService.createRandomWallet()
 
     return {
-      wallet: Currency.BITCOIN,
+      type: Currency.BITCOIN,
       walletId: name,
       address
     } as any

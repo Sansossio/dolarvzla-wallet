@@ -24,5 +24,3 @@ export class UserMeController {
     return UserMeDtoResponse.fromUserEntity(user)
   }
 }
-
-// kHP0qezsj+1pAEd6CVBpSvKbfGC1z1/BPyuG9fnUDmDHIc5ABkFkmzit9nGsVpY3tbc8vou93YNRdNzsF3DnsYoDziH3JSbDJMoN1PZU5pURiqIIw3lu2Y0tCfDAyMdvWeZDGMvKadSDr1oH++RtXe7lYJjvzZbrNX20Y6YdB1mvUqiJBY6uojc4CIFacr8IVqccSvlUo44Bh8st2c7Dlv772JT/bRFxZmwXqIL/hsU5pu8JAvjxhzYXA/91aj1qYvWS0UJNJfYHOodIqNBFOTcQlEWrZxNyydIVeVtRdSafpft/vbPprqDELQ==

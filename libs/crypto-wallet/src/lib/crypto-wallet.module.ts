@@ -2,6 +2,7 @@ import { HttpModule, Module } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
 import { ScheduleModule } from '@nestjs/schedule'
 import configuration from '../configuration'
+import { WalletOrchestrator } from './orchestrator/wallet.orchestrator'
 import { BitcoinSchedule } from './service/bitcoin/bitcoin.schedule'
 import { BitcoinService } from './service/bitcoin/bitcoin.service'
 
@@ -15,12 +16,14 @@ import { BitcoinService } from './service/bitcoin/bitcoin.service'
     HttpModule
   ],
   providers: [
+    WalletOrchestrator,
     BitcoinService,
 
     // Schedules
     BitcoinSchedule
   ],
   exports: [
+    WalletOrchestrator,
     BitcoinService
   ]
 })

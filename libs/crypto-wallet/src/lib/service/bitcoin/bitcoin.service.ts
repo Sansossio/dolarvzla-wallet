@@ -5,9 +5,12 @@ import { NewWalletDto } from '../dto/new-wallet.dto'
 import { AvailableMethodsRpc } from './dto/available-methods.enum'
 import { RpcResponseDto } from './dto/rpc-response.dto'
 import { WalletBalanceDto } from '../dto/wallet-balance.dto'
+import { Currency } from '@dolarvzla-wallet/models'
 
 @Injectable()
 export class BitcoinService extends BaseService {
+  type = Currency.BITCOIN
+
   private readonly rpcConfig = {
     domain: this.config.get('bitcoin.rpc.domain'),
     port: this.config.get('bitcoin.rpc.port'),
