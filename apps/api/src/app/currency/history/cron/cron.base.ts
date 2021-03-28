@@ -10,7 +10,7 @@ const INTERVAL = ms('1m')
 
 @Injectable()
 export abstract class CronBase {
-  abstract readonly name: Currency
+  abstract readonly currency: Currency
 
   constructor (
     @InjectRepository(CurrencyHistoryEntity)
@@ -21,7 +21,7 @@ export abstract class CronBase {
   ) {}
 
   private getCoinbaseApiUrl () {
-    return this.config.get<string>(`currency.prices.coinbase.${this.name}`)
+    return this.config.get<string>(`currency.prices.coinbase.${this.currency}`)
   }
 
   private async getPrice (): Promise<number> {
@@ -38,6 +38,10 @@ export abstract class CronBase {
 
   @Interval(INTERVAL)
   async update () {
-    await this.repository.save({ name: this.name, price: await this.getPrice() })
+    const obj: Partial<CurrencyHistoryEntity> = {
+      currency: this.currency,
+      price: await this.getPrice()
+    }
+    await this.repository.save(obj)
   }
 }

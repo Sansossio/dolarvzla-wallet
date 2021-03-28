@@ -4,5 +4,5 @@ import { CronBase } from '../cron.base'
 
 @Injectable()
 export class EthHistoryCron extends CronBase {
-  readonly name = Currency.ETHEREUM
+  readonly currency = Currency.ETHEREUM
 }
